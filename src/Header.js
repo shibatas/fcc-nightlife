@@ -15,7 +15,7 @@ class Header extends Component {
     }
     render() {
         return (
-            <div className='header'>
+            <header>
                 <div className='nav-title'>
                     <h1 id='title' onClick={this.handleClick}>Which Bar Tonight?</h1>
                 </div>
@@ -25,7 +25,7 @@ class Header extends Component {
                     logout={this.props.logout}
                     backToSearch={this.backToSearch}
                 />
-            </div>
+            </header>
         );
     }
 }
@@ -44,7 +44,7 @@ class Nav extends Component {
                 <div>
                     <ul className='nav-links'>
                         <li className='link' onClick={this.props.backToSearch}>
-                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <i className="fa fa-search" aria-hidden="true"></i>
                         </li>
                         <li className='link' onClick={this.logout}>Logout</li>
                     </ul>
@@ -55,7 +55,7 @@ class Nav extends Component {
                 <div>
                     <ul className='nav-links'>
                         <li className='link' onClick={this.props.backToSearch}>
-                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <i className="fa fa-search" aria-hidden="true"></i>
                         </li>
                         <li className='link' onClick={this.login}>Login</li>
                     </ul>

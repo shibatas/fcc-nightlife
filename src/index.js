@@ -13,7 +13,7 @@ import Login from './Login';
 import Footer from './Footer';
 import "./style.css";
 
-//require('dotenv').load();
+require('dotenv').load();
 
 class App extends Component {
   constructor(props) {
@@ -33,14 +33,10 @@ class App extends Component {
   loginFacebook = () => {
     console.log('login facebook');
     window.location = '/auth/facebook';
-    /*axios.get('/auth/facebook')
-    .then(res => {
-      console.log('facebook login success');
-      this.getUser();
-    })*/
   }
   logout = () => {
-    axios.get('/auth/logout')
+    let root = process.env.REACT_APP_APIURL || '';
+    axios.get(root + '/auth/logout')
     .then(res => {
       console.log('logged out');
       this.getUser();
@@ -53,11 +49,14 @@ class App extends Component {
     })
   }
   getData = () => {
+    console.log('process env', process.env);
+    let root = process.env.REACT_APP_APIURL || '';
+    //let root = 'https://which-bar-tonight.herokuapp.com';
     let query = this.state.query;
     let term = 'term=' + query.term;
     let radius = 'radius=' + query.radius;
     let sort_by = 'sort_by=' + query.sort_by;
-    let request = '/api/yelp?' + term + '&' + radius + '&' + sort_by;
+    let request = root + '/api/yelp?' + term + '&' + radius + '&' + sort_by;
     if (query.location) {
       let location = 'location=' + query.location;
       request += '&' + location;
@@ -70,7 +69,8 @@ class App extends Component {
       this.props.history.push('/');
       return;
     }
-    //console.log('getData', request);
+    console.log('getData', request);
+    
     axios.get(request)
     .then(res => {
       this.handleResults(res.data);
@@ -121,7 +121,10 @@ class App extends Component {
   } 
   getUser = () => {
     console.log('get user');
-    axios.get('/auth/user')
+    console.log('process env', process.env);
+    let root = process.env.REACT_APP_APIURL || '';
+    //let root = 'https://which-bar-tonight.herokuapp.com';
+    axios.get(root + '/auth/user')
     .then(res => {
       if (res.data) {
         this.setState({
