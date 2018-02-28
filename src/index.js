@@ -147,6 +147,7 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <div className='background'></div>
           <Header user={this.state.user} logout={this.logout}/>
           <Route exact path='/' render={(routeProps) => (
             <Home {...routeProps} 
