@@ -40,12 +40,15 @@ class Nav extends Component {
     logout = () => {
         this.props.logout();
     }
+    handleSubmit = (value) => {
+        console.log('submit', value);
+    }
     render() {
         return (
             <div>
                 <ul className='nav-links'>
                     <li className='link'>
-                        <SearchBox />
+                        <SearchBox onSubmit={this.handleSubmit}/>
                     </li>
                     {(this.props.user) ? (
                         <li className='link' onClick={this.logout}>Logout</li>
