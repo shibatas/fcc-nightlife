@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import SearchBox from './search-box/index';
+
 class Header extends Component {
     handleClick = (e) => {
         console.log(e.target.id);
@@ -39,29 +41,20 @@ class Nav extends Component {
         this.props.logout();
     }
     render() {
-        if (this.props.user) {
-            return (
-                <div>
-                    <ul className='nav-links'>
-                        <li className='link' onClick={this.props.backToSearch}>
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </li>
+        return (
+            <div>
+                <ul className='nav-links'>
+                    <li className='link'>
+                        <SearchBox />
+                    </li>
+                    {(this.props.user) ? (
                         <li className='link' onClick={this.logout}>Logout</li>
-                    </ul>
-                </div>
-            );
-        } else {
-            return (
-                <div>
-                    <ul className='nav-links'>
-                        <li className='link' onClick={this.props.backToSearch}>
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </li>
+                    ) : (
                         <li className='link' onClick={this.login}>Login</li>
-                    </ul>
-                </div>  
-            )
-        }
+                    )}
+                </ul>
+            </div>
+        );
     }
 }
 

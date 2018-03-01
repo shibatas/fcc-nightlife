@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import getCookie from './getCookie';
 import Card from './Card';
 
