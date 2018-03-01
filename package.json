@@ -14,7 +14,6 @@
     "passport-facebook": "^2.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "request": "^2.83.0"
   },
@@ -25,11 +24,10 @@
     "react-scripts": "1.0.17"
   },
   "scripts": {
-    "start": "PORT=3000 react-scripts start",
+    "start": "react-scripts start",
     "server": "nodemon server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "proxy": "http://localhost:3001"
+  }
 }

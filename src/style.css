@@ -1,17 +1,39 @@
+/* Background
+https://images.unsplash.com/photo-1516920846492-81bc6da9fc38?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a9cfc2f2e1c3766f7de7c61d9438a55a
+Vinicius Amano 
+https://unsplash.com/@viniciusamano
+*/
+
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    color: #eee;
 }
-.header {
+header {
     height: 80px;
     width: 100%;
-    background-color: #555;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     vertical-align: middle; 
-    color: #eee;
+}
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://images.unsplash.com/photo-1516920846492-81bc6da9fc38?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a9cfc2f2e1c3766f7de7c61d9438a55a") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /*filter: opacity(50%);*/
+    z-index: -1;
 }
 
 .nav-title {
@@ -44,7 +66,7 @@ li:hover {
 
 /* Home */
 .home, .list-loading, .login {
-    height: 600px;
+    height: calc(100vh - 150px);
     width: 100%;
     text-align: center;
     display: flex;
@@ -63,8 +85,12 @@ form {
 }
 input {
     margin: 0 10px;
+    padding: 0.5em;
     border: none;
-    border-bottom: solid 1px #555;
+    color: #222;
+    outline: none;
+    font-size: 1.2em;
+    background-color: #eee;
 }
 
 /* List */
@@ -111,19 +137,23 @@ input {
 }
 
 /* Footer */
-.footer {
-    background-color: white;
-    margin-left: 10%;
-    width: 80%;
+footer {
+    width: 100vw;
     height: 70px;
     margin-bottom: 0;
+}
+footer, footer a {
+    color: #888;
+}
+footer a:hover {
+    color: #fff;
 }
 .footer-container {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: baseline;
-    border-top: solid 1px #bbb;
+    border-top: solid 1px #888;
 }
 .footer-item {
     margin-right: 30px;
@@ -131,4 +161,13 @@ input {
 }
 i {
     margin: 0 10px;
+}
+
+
+/* Modify Bootstrap */
+.btn-default {
+    background-color: #eee;
+}
+.btn-default:hover {
+    background-color: #ccc;
 }
