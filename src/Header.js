@@ -17,7 +17,7 @@ class Header extends Component {
     }
     render() {
         return (
-            <div className='header'>
+            <header>
                 <div className='nav-title'>
                     <h1 id='title' onClick={this.handleClick}>Which Bar Tonight?</h1>
                 </div>
@@ -27,7 +27,7 @@ class Header extends Component {
                     logout={this.props.logout}
                     backToSearch={this.backToSearch}
                 />
-            </div>
+            </header>
         );
     }
 }
