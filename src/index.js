@@ -45,7 +45,14 @@ class App extends Component {
   setQuery = (query) => {
     this.setState({
       search: true,
-      query: query
+      query: {
+        term: 'bars',
+        location: query.location || '',
+        latitude: query.latitude || '',
+        longitude: query.longitude || '',
+        radius: 1000,
+        sort_by: 'distance'
+      }
     })
   }
   getData = () => {
@@ -148,7 +155,7 @@ class App extends Component {
       <Router>
         <div>
           <div className='background'></div>
-          <Header user={this.state.user} logout={this.logout}/>
+          <Header user={this.state.user} logout={this.logout} setQuery={this.setQuery}/>
           <Route exact path='/' render={(routeProps) => (
             <Home {...routeProps} 
               setQuery={this.setQuery} 

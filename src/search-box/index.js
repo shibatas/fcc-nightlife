@@ -9,6 +9,9 @@ class SearchBox extends Component {
         value: ""
       };
     }
+    componentDidMount() {
+      
+    }
     handleChange = (e) => {
       console.log(e.target.value);
       this.setState({
@@ -17,7 +20,6 @@ class SearchBox extends Component {
     }
     handleSubmit = (e) => {
       e.preventDefault();
-      console.log('submit', this.state.value);
       this.props.onSubmit(this.state.value);
     }
     render() {
@@ -25,7 +27,7 @@ class SearchBox extends Component {
             <div className="searchbox">
               <form onSubmit={this.handleSubmit}>
                 <input type="text" placeholder="City or address" value={this.state.value} onChange={this.handleChange}/>
-                <button type="submit">
+                <button onMouseDown={this.handleSubmit}>
                   <i className="fa fa-search"></i>
                 </button>
               </form>

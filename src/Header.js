@@ -21,12 +21,7 @@ class Header extends Component {
                 <div className='nav-title'>
                     <h1 id='title' onClick={this.handleClick}>Which Bar Tonight?</h1>
                 </div>
-                <Nav 
-                    user={this.props.user} 
-                    history={this.props.history} 
-                    logout={this.props.logout}
-                    backToSearch={this.backToSearch}
-                />
+                <Nav  {...this.props} />
             </header>
         );
     }
@@ -41,7 +36,14 @@ class Nav extends Component {
         this.props.logout();
     }
     handleSubmit = (value) => {
-        console.log('submit', value);
+        if (value && value.length > 0) {
+            this.props.setQuery({
+                location: value
+            });
+            this.props.history.push('/list');
+        } else {
+            alert('Empty query');
+        }
     }
     render() {
         return (
