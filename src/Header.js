@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import SearchBox from './search-box/index';
+
 class Header extends Component {
     handleClick = (e) => {
         console.log(e.target.id);
@@ -15,17 +17,12 @@ class Header extends Component {
     }
     render() {
         return (
-            <div className='header'>
+            <header>
                 <div className='nav-title'>
                     <h1 id='title' onClick={this.handleClick}>Which Bar Tonight?</h1>
                 </div>
-                <Nav 
-                    user={this.props.user} 
-                    history={this.props.history} 
-                    logout={this.props.logout}
-                    backToSearch={this.backToSearch}
-                />
-            </div>
+                <Nav  {...this.props} />
+            </header>
         );
     }
 }
@@ -38,30 +35,31 @@ class Nav extends Component {
     logout = () => {
         this.props.logout();
     }
-    render() {
-        if (this.props.user) {
-            return (
-                <div>
-                    <ul className='nav-links'>
-                        <li className='link' onClick={this.props.backToSearch}>
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </li>
-                        <li className='link' onClick={this.logout}>Logout</li>
-                    </ul>
-                </div>
-            );
+    handleSubmit = (value) => {
+        if (value && value.length > 0) {
+            this.props.setQuery({
+                location: value
+            });
+            this.props.history.push('/list');
         } else {
-            return (
-                <div>
-                    <ul className='nav-links'>
-                        <li className='link' onClick={this.props.backToSearch}>
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </li>
-                        <li className='link' onClick={this.login}>Login</li>
-                    </ul>
-                </div>  
-            )
+            alert('Empty query');
         }
+    }
+    render() {
+        return (
+            <div>
+                <ul className='nav-links'>
+                    <li className='link'>
+                        <SearchBox onSubmit={this.handleSubmit}/>
+                    </li>
+                    {(this.props.user) ? (
+                        <li className='link' onClick={this.logout}>Logout</li>
+                    ) : (
+                        <li className='link' onClick={this.login}>Login</li>
+                    )}
+                </ul>
+            </div>
+        );
     }
 }
 

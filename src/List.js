@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import getCookie from './getCookie';
 import Card from './Card';
 
@@ -18,10 +17,7 @@ class List extends Component {
         })
     }
     componentDidMount() {
-        if (this.props.search) {
-            console.log('list update by search results');
-            this.props.getData();
-        } else {
+        if (!this.props.search) {
             console.log('no query. list update by cookie');
             this.props.setByCookie();
         }

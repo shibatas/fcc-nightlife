@@ -1,0 +1,59 @@
+.searchbox {
+  position: relative;
+  margin: auto;
+}
+.searchbox input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #ccc;
+  font-size: 18px;
+  height: 30px;
+  width: 0px;
+  padding: 0 15px;
+  margin: 0;
+  line-height: 20px;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  cursor: pointer;
+  z-index: 3;
+  opacity: 0;
+  transition: width 0.5s;
+}
+.searchbox button {
+  position: relative;
+  right: -20px;
+  width: 30px;  
+  text-align: center;
+  font-size: 20px;
+  line-height: 30px;
+  border: none;
+  border-radius: 15px;
+  background-color: #444;
+  outline: none;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+  margin: 0;
+  transition: background-color 0.5s;
+}
+.searchbox i {
+  margin: auto;
+}
+.searchbox input:focus {
+  background-color: #333;
+  width: 200px;
+  padding-right: 45px;
+  cursor: text;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.5s, width 0.5s;
+}
+.searchbox input:focus + button {
+  background-color: #4682b4;
+  transition: background-color 0.5s;
+}
+.searchbox input:focus + button:hover {
+  background-color: #78a4c8;
+}

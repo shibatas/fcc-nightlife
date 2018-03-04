@@ -13,14 +13,13 @@ import Login from './Login';
 import Footer from './Footer';
 import "./style.css";
 
-//require('dotenv').load();
+require('dotenv').load();
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       search: false,
-      query: null,
       list: null,
       location: null,
       user: null
@@ -33,14 +32,10 @@ class App extends Component {
   loginFacebook = () => {
     console.log('login facebook');
     window.location = '/auth/facebook';
-    /*axios.get('/auth/facebook')
-    .then(res => {
-      console.log('facebook login success');
-      this.getUser();
-    })*/
   }
   logout = () => {
-    axios.get('/auth/logout')
+    let root = process.env.REACT_APP_APIURL || '';
+    axios.get(root + '/auth/logout')
     .then(res => {
       console.log('logged out');
       this.getUser();
@@ -49,15 +44,23 @@ class App extends Component {
   setQuery = (query) => {
     this.setState({
       search: true,
-      query: query
-    })
+    });
+    this.getData({
+      term: 'bars',
+      location: query.location || '',
+      latitude: query.latitude || '',
+      longitude: query.longitude || '',
+      radius: 1000,
+      sort_by: 'distance'
+    });
   }
-  getData = () => {
-    let query = this.state.query;
+  getData = (query) => {
+    console.log('get data', query);
+    let root = process.env.REACT_APP_APIURL || '';
     let term = 'term=' + query.term;
     let radius = 'radius=' + query.radius;
     let sort_by = 'sort_by=' + query.sort_by;
-    let request = '/api/yelp?' + term + '&' + radius + '&' + sort_by;
+    let request = root + '/api/yelp?' + term + '&' + radius + '&' + sort_by;
     if (query.location) {
       let location = 'location=' + query.location;
       request += '&' + location;
@@ -70,9 +73,11 @@ class App extends Component {
       this.props.history.push('/');
       return;
     }
-    //console.log('getData', request);
+    console.log('getData', request);
+    
     axios.get(request)
     .then(res => {
+      console.log('response', res.data);
       this.handleResults(res.data);
     })
     .catch(err => {
@@ -80,11 +85,12 @@ class App extends Component {
     });
   }
   handleResults = (data) => {
+    let root = process.env.REACT_APP_APIURL || '';
     let list = [];
     // send data to database
     data.forEach(item => {
       list.push(item.id);
-      axios.post('api/bars', item)
+      axios.post(root + '/api/bars', item)
       .then(res => {
         //console.log('api/bars success', res.data);
       })
@@ -121,7 +127,9 @@ class App extends Component {
   } 
   getUser = () => {
     console.log('get user');
-    axios.get('/auth/user')
+    console.log('process env', process.env);
+    let root = process.env.REACT_APP_APIURL || '';
+    axios.get(root + '/auth/user')
     .then(res => {
       if (res.data) {
         this.setState({
@@ -144,7 +152,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Header user={this.state.user} logout={this.logout}/>
+          <div className='background'></div>
+          <Header user={this.state.user} logout={this.logout} setQuery={this.setQuery}/>
           <Route exact path='/' render={(routeProps) => (
             <Home {...routeProps} 
               setQuery={this.setQuery} 

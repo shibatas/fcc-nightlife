@@ -17,7 +17,8 @@ class Card extends Component {
         const today = new Date();
         const todayString = today.toISOString().slice(0,10);
         //console.log('update card', this.props.id);
-        axios.get('api/bars/'+this.props.id)
+        let root = process.env.REACT_APP_APIURL || '';
+        axios.get(root + '/api/bars/'+this.props.id)
         .then(res => {
             //console.log(res);
             let data = Object.assign({}, res.data);
