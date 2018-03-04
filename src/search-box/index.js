@@ -6,14 +6,13 @@ class SearchBox extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        value: ""
+        value: ''
       };
     }
     componentDidMount() {
       
     }
     handleChange = (e) => {
-      console.log(e.target.value);
       this.setState({
         value: e.target.value
       })
@@ -21,6 +20,9 @@ class SearchBox extends Component {
     handleSubmit = (e) => {
       e.preventDefault();
       this.props.onSubmit(this.state.value);
+      this.setState({
+        value: ''
+      })
     }
     render() {
         return (

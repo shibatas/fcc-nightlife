@@ -20,7 +20,6 @@ class App extends Component {
     super(props);
     this.state = {
       search: false,
-      query: null,
       list: null,
       location: null,
       user: null
@@ -45,21 +44,19 @@ class App extends Component {
   setQuery = (query) => {
     this.setState({
       search: true,
-      query: {
-        term: 'bars',
-        location: query.location || '',
-        latitude: query.latitude || '',
-        longitude: query.longitude || '',
-        radius: 1000,
-        sort_by: 'distance'
-      }
-    })
+    });
+    this.getData({
+      term: 'bars',
+      location: query.location || '',
+      latitude: query.latitude || '',
+      longitude: query.longitude || '',
+      radius: 1000,
+      sort_by: 'distance'
+    });
   }
-  getData = () => {
-    console.log('process env', process.env);
+  getData = (query) => {
+    console.log('get data', query);
     let root = process.env.REACT_APP_APIURL || '';
-    //let root = 'https://which-bar-tonight.herokuapp.com';
-    let query = this.state.query;
     let term = 'term=' + query.term;
     let radius = 'radius=' + query.radius;
     let sort_by = 'sort_by=' + query.sort_by;
@@ -88,11 +85,12 @@ class App extends Component {
     });
   }
   handleResults = (data) => {
+    let root = process.env.REACT_APP_APIURL || '';
     let list = [];
     // send data to database
     data.forEach(item => {
       list.push(item.id);
-      axios.post('api/bars', item)
+      axios.post(root + '/api/bars', item)
       .then(res => {
         //console.log('api/bars success', res.data);
       })
@@ -131,7 +129,6 @@ class App extends Component {
     console.log('get user');
     console.log('process env', process.env);
     let root = process.env.REACT_APP_APIURL || '';
-    //let root = 'https://which-bar-tonight.herokuapp.com';
     axios.get(root + '/auth/user')
     .then(res => {
       if (res.data) {

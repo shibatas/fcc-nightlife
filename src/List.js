@@ -17,10 +17,7 @@ class List extends Component {
         })
     }
     componentDidMount() {
-        if (this.props.search) {
-            console.log('list update by search results');
-            this.props.getData();
-        } else {
+        if (!this.props.search) {
             console.log('no query. list update by cookie');
             this.props.setByCookie();
         }
