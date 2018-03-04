@@ -80,6 +80,7 @@ class App extends Component {
     
     axios.get(request)
     .then(res => {
+      console.log('response', res.data);
       this.handleResults(res.data);
     })
     .catch(err => {
