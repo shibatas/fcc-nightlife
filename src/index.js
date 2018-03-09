@@ -87,6 +87,7 @@ class App extends Component {
   handleResults = (data) => {
     let root = process.env.REACT_APP_APIURL || '';
     let list = [];
+    console.log('root', root);
     // send data to database
     data.forEach(item => {
       list.push(item.id);
