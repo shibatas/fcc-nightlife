@@ -6,10 +6,9 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            term: 'bars',
-            location: null,
-            radius: 1000,
-            sort_by: 'distance'
+            location: '',
+            latitude: '',
+            longitude: ''
         } 
     }
     componentDidMount() {
@@ -25,14 +24,11 @@ class Home extends Component {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(data => {
                 console.log('lat', data.coords.latitude, 'long', data.coords.longitude);
-                this.props.setQuery({
-                    term: this.state.term,
+                this.setState({
                     latitude: data.coords.latitude,
                     longitude: data.coords.longitude,
-                    radius: this.state.radius,
-                    sort_by: 'distance'
                 });
-                this.props.history.push('/list');
+                this.submitForm();
             }, err => { 
                 console.error(err);
                 this.props.history.push('/');
@@ -51,15 +47,13 @@ class Home extends Component {
             location: value
         });
     }
-    submitForm = (e) => {
+    handleClick = (e) => {
         e.preventDefault();
-        //console.log('submitForm', this.state);
-        if (this.state.location) {
-            this.props.setQuery(this.state);
-            this.props.history.push('/list');
-        } else {
-            console.log('submitted empty form');
-        }
+        this.submitForm();
+    }
+    submitForm = () => {
+        this.props.setQuery(this.state);
+        this.props.history.push('/list');
     }
     render() {
         return (
@@ -75,7 +69,7 @@ class Home extends Component {
                         placeholder='City name, address, or neighborhood'
                         onChange={this.handleChange}
                     />
-                    <input className='btn btn-primary' type='submit' value='Search' onClick={this.submitForm} />
+                    <input className='btn btn-primary' type='submit' value='Search' onClick={this.handleClick} />
                 </form>
             </div>
         );
