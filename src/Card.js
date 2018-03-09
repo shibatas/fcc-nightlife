@@ -93,15 +93,27 @@ class Card extends Component {
     }
     render() {
         if (this.state.data) {
+            let fontSize = (this.state.data.name.length > 20) ? ('16px') : ('20px');
+            let numberStyle = (this.state.data.going.length > 0) ? ({
+                backgroundColor: '#c51d1d',
+                color: '#eee'
+            }) : ({
+                backgroundColor: '#eee',
+                color: '#4682b4'
+            });
             return (
                 <div className='list-card'>
                     <img className='card-image' src={this.state.data.image_url} alt={this.state.data.name}/>
-                    <div className='card-name'><p>{this.state.data.name}</p></div>
-                    <p>Going tonight: {this.state.data.going.length}</p>
-                    <button className='btn btn-default' 
-                        id={this.state.data.id} 
-                        onClick={this.handleClick} 
-                    >{this.state.btnText}</button>
+                    <div className='card-number' style={numberStyle}>{this.state.data.going.length}<div className='text'>going tonight</div></div>
+                    <div className='card-overlay'>
+                        <div className='card-name' style={{
+                            fontSize: fontSize
+                        }}><p>{this.state.data.name}</p></div>
+                        <button className='btn btn-default' 
+                            id={this.state.data.id} 
+                            onClick={this.handleClick} 
+                        >{this.state.btnText}</button>
+                    </div>
                 </div>    
             );
         } else {
