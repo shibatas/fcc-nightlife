@@ -19,7 +19,7 @@ class Header extends Component {
         return (
             <header>
                 <div className='nav-title'>
-                    <h1 id='title' onClick={this.handleClick}><i class="fas fa-glass-martini"></i>Which Bar Tonight?</h1>
+                    <h1 id='title' onClick={this.handleClick}><i className="fas fa-glass-martini"></i>Which Bar Tonight?</h1>
                 </div>
                 <Nav  {...this.props} />
             </header>
