@@ -19,7 +19,7 @@ class Header extends Component {
         return (
             <header>
                 <div className='nav-title'>
-                    <h1 id='title' onClick={this.handleClick}>Which Bar Tonight?</h1>
+                    <h1 id='title' onClick={this.handleClick}><i class="fas fa-glass-martini"></i>Which Bar Tonight?</h1>
                 </div>
                 <Nav  {...this.props} />
             </header>
@@ -46,12 +46,18 @@ class Nav extends Component {
         }
     }
     render() {
+        console.log('nav props', this.props);
         return (
             <div>
                 <ul className='nav-links'>
-                    <li className='link'>
-                        <SearchBox onSubmit={this.handleSubmit}/>
-                    </li>
+                    {(this.props.location.pathname !== '/') ? (
+                        <li className='link'>
+                            <SearchBox onSubmit={this.handleSubmit}/>
+                        </li>
+                    ) : (
+                        null
+                    )}
+                    
                     {(this.props.user) ? (
                         <li className='link' onClick={this.logout}>Logout</li>
                     ) : (

@@ -4,10 +4,24 @@ Vinicius Amano
 https://unsplash.com/@viniciusamano
 */
 
+@keyframes slide-up {
+    from { transform: translateY(0);}
+    to { transform: translateY(-100%);}
+}
+@keyframes fade-out {
+    from { opacity: 1;}
+    to { opacity: 0;}
+}
+@keyframes fade-in {
+    from { opacity: 0;}
+    to { opacity: 1;}
+}
+
 html, body {
     margin: 0;
     padding: 0;
     color: #eee;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 header {
     height: 80px;
@@ -40,6 +54,12 @@ header {
     vertical-align: middle;
     margin-left: 5%;
 }
+.nav-title h1 {
+    font-weight: bold;
+}
+.nav-title svg {
+    margin-right: 20px;
+}
 #title:hover {
     cursor: pointer;
 }
@@ -65,12 +85,46 @@ li:hover {
 
 /* Home */
 .home, .list-loading, .login {
+    position: relative;
     height: calc(100vh - 150px);
     width: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
+}
+.home-intro {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 11;
+}
+.home-intro.slide {
+    animation: slide-up 0.5s both, fade-out 0.5s both;
+}
+.home-intro button {
+    width: 10%;
+    margin: 50px;
+}
+.home-search {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    z-index: 10;
+}
+.home-search.slide {
+    animation: slide-up 0.5s both, fade-in 0.5s both;
 }
 .geolocation {
     margin-top: 20px;
@@ -198,14 +252,13 @@ footer a:hover {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: baseline;
+    align-items: center;
     border-top: solid 1px #888;
 }
 .footer-item {
-    margin-right: 30px;
-    padding-top: 25px;
+    margin: 0 10px;
 }
-i {
+.footer-item svg {
     margin: 0 10px;
 }
 

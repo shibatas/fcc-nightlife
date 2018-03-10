@@ -48,8 +48,25 @@ class Home extends Component {
         });
     }
     handleClick = (e) => {
+        console.log('click');
         e.preventDefault();
-        this.submitForm();
+        switch (e.target.id) {
+            case 'submit':
+                this.submitForm();
+                break;
+            case 'get-location':
+                this.getLocation();
+                break;
+            case 'get-started':
+                this.showSearch();
+                break;
+            default:
+        }
+    }
+    showSearch = () => {
+        console.log('show-search');
+        document.getElementById('home-intro').classList.toggle('slide');
+        document.getElementById('home-search').classList.toggle('slide');
     }
     submitForm = () => {
         this.props.setQuery(this.state);
@@ -58,19 +75,26 @@ class Home extends Component {
     render() {
         return (
             <div className='home'>
-                <h1>Where are you?</h1>
-                <div className='geolocation'>
-                    <button className='btn btn-default' id='get-location' onClick={this.getLocation} >Use my current location</button>
+                <div id='home-intro' className='home-intro'>
+                    <h1>Find the best bars TONIGHT.</h1>
+                    <h1>Instantly.</h1>
+                    <button id='get-started' className='btn btn-default' onClick={this.handleClick}>Get started</button>
                 </div>
-                <form>
-                    <input 
-                        type='text' 
-                        size='50'
-                        placeholder='City name, address, or neighborhood'
-                        onChange={this.handleChange}
-                    />
-                    <input className='btn btn-primary' type='submit' value='Search' onClick={this.handleClick} />
-                </form>
+                <div id='home-search' className='home-search'>
+                    <h1>Where are you?</h1>
+                    <div className='geolocation'>
+                        <button className='btn btn-default' id='get-location' onClick={this.handleClick} >Use my current location</button>
+                    </div>
+                    <form>
+                        <input 
+                            type='text' 
+                            size='50'
+                            placeholder='City name, address, or neighborhood'
+                            onChange={this.handleChange}
+                        />
+                        <input id='submit' className='btn btn-primary' type='submit' value='Search' onClick={this.handleClick} />
+                    </form>
+                </div>
             </div>
         );
     }
