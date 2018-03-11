@@ -14,8 +14,8 @@ class Footer extends Component {
                     <div className='footer-item'>Background image by <a href='https://unsplash.com/@viniciusamano' target='_blank'>@viniciusamano</a> on Unsplash</div>
                     <div className='footer-item'>© Shohei Shibata 2017</div>
                     <div className='footer-item'>
-                        <a href='https://shoheishibata.com/portfolio/' target='_blank' rel='noopener noreferrer' ><i className='fa fa-home fa-2x'/></a>
-                        <a href='https://github.com/shibatas' target='_blank' rel='noopener noreferrer' ><i class="fab fa-github fa-2x"></i></a>
+                        <a href='https://shoheishibata.com' target='_blank' rel='noopener noreferrer' ><i className='fa fa-home fa-2x'/></a>
+                        <a href='https://github.com/shibatas' target='_blank' rel='noopener noreferrer' ><i className="fab fa-github fa-2x"></i></a>
                     </div>
                 </div>
             </footer>

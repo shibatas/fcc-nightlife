@@ -67,20 +67,22 @@ class Home extends Component {
         console.log('show-search');
         document.getElementById('home-intro').classList.toggle('slide');
         document.getElementById('home-search').classList.toggle('slide');
+        document.cookie = 'intro=false';
     }
     submitForm = () => {
         this.props.setQuery(this.state);
         this.props.history.push('/list');
     }
     render() {
+        let classAppend = getCookie('intro') ? '' : ' slide';
         return (
             <div className='home'>
-                <div id='home-intro' className='home-intro'>
-                    <h1>Find the best bars TONIGHT.</h1>
-                    <h1>Instantly.</h1>
+                <div id='home-intro' className={'home-intro' + classAppend}>
+                    <h1>Best bars TONIGHT?</h1>
+                    <h1>Find out here. Instantly.</h1>
                     <button id='get-started' className='btn btn-default' onClick={this.handleClick}>Get started</button>
                 </div>
-                <div id='home-search' className='home-search'>
+                <div id='home-search' className={'home-search' + classAppend}>
                     <h1>Where are you?</h1>
                     <div className='geolocation'>
                         <button className='btn btn-default' id='get-location' onClick={this.handleClick} >Use my current location</button>

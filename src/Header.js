@@ -42,7 +42,7 @@ class Nav extends Component {
             });
             this.props.history.push('/list');
         } else {
-            alert('Empty query');
+            document.activeElement.blur();
         }
     }
     render() {
@@ -50,7 +50,7 @@ class Nav extends Component {
         return (
             <div>
                 <ul className='nav-links'>
-                    {(this.props.location.pathname !== '/') ? (
+                    {(this.props.location.pathname === '/list') ? (
                         <li className='link'>
                             <SearchBox onSubmit={this.handleSubmit}/>
                         </li>
