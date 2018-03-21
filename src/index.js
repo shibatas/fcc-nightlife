@@ -6,11 +6,12 @@ import {
 } from 'react-router-dom';
 import axios from 'axios';
 import getCookie from './getCookie';
-import Header from './Header';
-import Home from './Home';
+import Header from './Header/Header';
+import Landing from './Contents/Landing';
 import List from './List';
 import Login from './Login';
 import Footer from './Footer';
+import MobileNav from './MobileNav/MobileNav';
 import "./style.css";
 
 require('dotenv').load();
@@ -155,28 +156,36 @@ class App extends Component {
         <div>
           <div className='background'></div>
           <Header user={this.state.user} logout={this.logout} setQuery={this.setQuery}/>
-          <Route exact path='/' render={(routeProps) => (
-            <Home {...routeProps} 
-              setQuery={this.setQuery} 
-            />
-          )} />
-          <Route path='/list' render={(routeProps) => (
-            <List {...routeProps} 
-              list={this.state.list}
-              location={this.state.location}
-              redirect={this.state.redirect}
-              user={this.state.user}
-              search={this.state.search}
-              getData={this.getData} 
-              setByCookie={this.updateByCookie}
-            />
-          )} />
-          <Route path='/login' render={(routeProps) => (
-            <Login {...routeProps}
-              loginFacebook={this.loginFacebook}
-            />
-          )} />
-          <Footer />
+          <div className='contents'>
+            <Route exact path='/' render={(routeProps) => (
+              <Landing {...routeProps} 
+                setQuery={this.setQuery} 
+              />
+            )} />
+            {/*<Route exact path='/' render={(routeProps) => (
+              <Home {...routeProps} 
+                setQuery={this.setQuery} 
+              />
+            )} />
+            <Route path='/list' render={(routeProps) => (
+              <List {...routeProps} 
+                list={this.state.list}
+                location={this.state.location}
+                redirect={this.state.redirect}
+                user={this.state.user}
+                search={this.state.search}
+                getData={this.getData} 
+                setByCookie={this.updateByCookie}
+              />
+            )} />
+            <Route path='/login' render={(routeProps) => (
+              <Login {...routeProps}
+                loginFacebook={this.loginFacebook}
+              />
+            )} />*/}
+            <Footer />
+          </div>
+          <MobileNav />
         </div>
       </Router>
     );

@@ -1,0 +1,47 @@
+
+header {
+    position: fixed;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    vertical-align: middle; 
+}
+.nav {
+    display: none;
+}
+.nav-title {
+    vertical-align: middle;
+    margin: auto;
+}
+.nav-title h1 {
+    font-weight: bold;
+    margin: 0;
+}
+.nav-title svg {
+    margin-right: 20px;;
+}
+#title:hover {
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+    height: 100%;
+    margin-right: 20px;
+}
+
+li {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 1.5em;
+}
+
+li:hover {
+    cursor: pointer;
+}

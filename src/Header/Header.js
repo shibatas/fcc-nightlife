@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import SearchBox from './search-box/index';
+import SearchBox from '../search-box/index';
+
+import './style.css';
 
 class Header extends Component {
     handleClick = (e) => {
@@ -19,7 +21,7 @@ class Header extends Component {
         return (
             <header>
                 <div className='nav-title'>
-                    <h1 id='title' onClick={this.handleClick}><i className="fas fa-glass-martini"></i>Which Bar Tonight?</h1>
+                    <h1 id='title' onClick={this.handleClick}><i className="fas fa-glass-martini fa-sm"></i>BARPICK</h1>
                 </div>
                 <Nav  {...this.props} />
             </header>
@@ -48,7 +50,7 @@ class Nav extends Component {
     render() {
         console.log('nav props', this.props);
         return (
-            <div>
+            <div className='nav'>
                 <ul className='nav-links'>
                     {(this.props.location.pathname === '/list') ? (
                         <li className='link'>

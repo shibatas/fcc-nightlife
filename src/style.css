@@ -10,14 +10,6 @@ html, body {
     color: #eee;
     font-family: 'Source Sans Pro', sans-serif;
 }
-header {
-    height: 80px;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    vertical-align: middle; 
-}
 .background {
     position: fixed;
     top: 0;
@@ -25,10 +17,10 @@ header {
     width: 100vw;
     height: 100vh;
     background: linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
     ),
-    url("https://images.unsplash.com/photo-1516920846492-81bc6da9fc38?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a9cfc2f2e1c3766f7de7c61d9438a55a") no-repeat center center fixed; 
+    url("https://images.unsplash.com/photo-1438557068880-c5f474830377?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=61ed3b01e3b4d21498412ccc08f933a5") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -37,38 +29,10 @@ header {
     z-index: -1;
 }
 
-.nav-title {
-    vertical-align: middle;
-    margin-left: 30px;
-}
-.nav-title h1 {
-    font-weight: bold;
-}
-.nav-title svg {
-    margin-right: 20px;
-}
-#title:hover {
-    cursor: pointer;
+.contents {
+    padding-bottom: 50px;
 }
 
-.nav-links {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    list-style-type: none;
-    height: 100%;
-    margin-right: 20px;
-}
-
-li {
-    display: inline-block;
-    margin: 0 10px;
-    font-size: 1.5em;
-}
-
-li:hover {
-    cursor: pointer;
-}
 
 /* Home */
 .home, .list-loading, .login {
@@ -231,6 +195,7 @@ footer {
     width: 100vw;
     height: 70px;
     margin-bottom: 0;
+    background-color: #000;
 }
 footer, footer a {
     color: #888;
@@ -243,7 +208,6 @@ footer a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: solid 1px #888;
 }
 .footer-item {
     margin: 0 10px;

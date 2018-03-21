@@ -1,0 +1,20 @@
+.landing {
+    position: relative;
+    width: 100%;
+}
+
+.landing-intro {
+    height: calc(100vh - 50px);
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.landing-intro button {
+    margin: 50px 0;
+    width: 164px;
+    font-size: 24px;
+}
