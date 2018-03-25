@@ -7,7 +7,11 @@ class MobileNav extends Component {
     render() {
         return (
             <div className='nav-mobile'>
-                <div className='logout'>Logout</div>
+                <div className='nav-links'>
+                    <ul>
+                        <li>Logout</li>
+                    </ul>
+                </div>
             </div>
         );
     }

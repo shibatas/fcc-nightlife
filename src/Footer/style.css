@@ -1,0 +1,26 @@
+footer {
+    width: 100vw;
+    height: 125px;
+    margin-bottom: 0;
+    background-color: #000;
+}
+footer, footer a {
+    color: #888;
+}
+footer a:hover {
+    color: #fff;
+}
+.footer-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer-item {
+    margin: 5px 0;
+    text-align: center;
+}
+.footer-item svg {
+    margin: 0 10px;
+}

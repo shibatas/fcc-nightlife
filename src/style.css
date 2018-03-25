@@ -190,33 +190,6 @@ input {
     margin: auto;
 }
 
-/* Footer */
-footer {
-    width: 100vw;
-    height: 70px;
-    margin-bottom: 0;
-    background-color: #000;
-}
-footer, footer a {
-    color: #888;
-}
-footer a:hover {
-    color: #fff;
-}
-.footer-container {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.footer-item {
-    margin: 0 10px;
-}
-.footer-item svg {
-    margin: 0 10px;
-}
-
-
 /* Modify Bootstrap */
 .btn-default {
     background-color: #eee;

@@ -10,7 +10,7 @@ import Header from './Header/Header';
 import Landing from './Contents/Landing';
 import List from './List';
 import Login from './Login';
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 import MobileNav from './MobileNav/MobileNav';
 import "./style.css";
 
