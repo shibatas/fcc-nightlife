@@ -12,6 +12,7 @@ import List from './List';
 import Login from './Login';
 import Footer from './Footer/Footer';
 import MobileNav from './MobileNav/MobileNav';
+import Modal from './Modal/Modal';
 import "./style.css";
 
 require('dotenv').load();
@@ -23,7 +24,8 @@ class App extends Component {
       search: false,
       list: null,
       location: null,
-      user: null
+      user: null,
+      modal: false
     }
   }
   componentDidMount() {
@@ -149,12 +151,18 @@ class App extends Component {
       }
     })
   }
+  triggerModal = () => {
+    this.setState({
+      modal: !this.state.modal
+    })
+  }
   render() {
     //console.log('index render', this.state.list);
     return (
       <Router>
         <div>
           <div className='background'></div>
+          <Modal modal={this.state.modal} triggerModal={this.triggerModal}/>
           <Header user={this.state.user} logout={this.logout} setQuery={this.setQuery}/>
           <div className='contents'>
             <Route exact path='/' render={(routeProps) => (
@@ -185,7 +193,7 @@ class App extends Component {
             )} />*/}
             <Footer />
           </div>
-          <MobileNav />
+          <MobileNav triggerModal={this.triggerModal}/>
         </div>
       </Router>
     );

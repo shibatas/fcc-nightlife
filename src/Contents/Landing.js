@@ -24,11 +24,8 @@ class Landing extends Component {
             <div className='landing'>
                 <div className='landing-intro'>
                     <h1>Let's find good times. Fast.</h1>
-                    <h3>
-                        Wanna go to a bar tonight? <br/>
-                        Only get the best three choices <br/>
-                        So you can just pick one and go! <br/>
-                    </h3>
+                    <h3>Wanna go to a bar tonight?</h3>
+                    <h3>We make finding it easy and fast.</h3>
                     <button id='get-started' className='btn btn-primary' onClick={this.handleClick}>Get started</button>
                 </div>
             </div>

@@ -12,14 +12,14 @@ footer a:hover {
 }
 .footer-container {
     height: 100%;
-    padding-top: 70px;
+    padding-top: 60px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 }
 .footer-item {
-    margin: 5px 0;
+    margin: 10px 0;
     text-align: center;
 }
 .footer-item svg {

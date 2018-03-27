@@ -20,6 +20,7 @@
 
 .nav-mobile-search input {
     background-color: transparent;
+    color: #eee;
     caret-color: #eee;
 }
 

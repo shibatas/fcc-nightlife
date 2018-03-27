@@ -15,7 +15,7 @@ class MobileNav extends Component {
                 </div>     
                 <div className='nav-mobile-links'>
                     <ul>
-                        <li>
+                        <li onClick={this.props.triggerModal}>
                             <i class="fas fa-sign-in-alt fa-lg"></i>
                             <small>Login</small>
                         </li>
