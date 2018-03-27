@@ -5,16 +5,44 @@
     height: 50px;
     background-color: #222;
     font-size: 16px;
-    line-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.nav-links {
-    position: relative;
-    right: 0;
+.nav-mobile-search form {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    margin: 0;
+    height: 50px;
+}
+
+.nav-mobile-search input {
+    background-color: transparent;
+    caret-color: #eee;
+}
+
+.nav-mobile-links {
+    height: 100%;
     margin: 0;
 }
 
-.nav-links ul {
+.nav-mobile-links ul {
+    height: 100%;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-mobile-links li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-mobile-links small {
+    font-size: 12px;
 }

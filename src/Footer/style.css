@@ -1,6 +1,6 @@
 footer {
     width: 100vw;
-    height: 125px;
+    height: calc(100vh - 50px);
     margin-bottom: 0;
     background-color: #000;
 }
@@ -12,9 +12,10 @@ footer a:hover {
 }
 .footer-container {
     height: 100%;
+    padding-top: 70px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 .footer-item {
